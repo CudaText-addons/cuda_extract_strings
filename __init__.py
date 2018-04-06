@@ -12,7 +12,7 @@ SIZE_X = 600
 SIZE_Y = 400
 SIZE_BTN = 150
 
-REGEX_EMAIL = '[a-zA-Z0-9][\w\.\-_]*@\w[\w\.\-]*\.[a-zA-Z]{2,}'
+REGEX_EMAIL = r'\b[a-zA-Z0-9][\w\.\-_]*@\w[\w\.\-]*\.[a-zA-Z]{2,}\b'
 
 
 def do_find(text, case_sens):
@@ -102,7 +102,15 @@ class Command:
     
     def emails(self):
         res = get_emails()
-        if res:
-            file_open('')
-            for s in res:
-                ed.set_text_line(-1, s)
+        if not res:
+            msg_status('No strings found')
+            return
+
+        #del dups            
+        res = list(set(res))
+        
+        file_open('')
+        ed.set_prop(PROP_TAB_TITLE, 'e-mails')
+
+        for s in res:
+            ed.set_text_line(-1, s)
