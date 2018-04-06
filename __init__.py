@@ -1,11 +1,16 @@
 from cudatext import *
 from . import extract
+from . import filtering
 
 class Command:
 
     def dlg_extract(self):
     
         extract.dlg_extract()
+        
+    def dlg_filter(self):
+    
+        filtering.dlg_filter()
 
     def emails(self):
     

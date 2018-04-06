@@ -1,6 +1,6 @@
 [info]
 title=Extract Strings
-desc=Shows dialog to enter RegEx, this RegEx will find list of strings. You can choose what to do with these strings: copy to clipboard, copy to new tab.
+desc=Shows dialog to enter RegEx, this RegEx will find list of strings. You can choose what to do with these strings: copy to clipboard, copy to new tab. Also includes Filter Lines command to find lines.
 type=cudatext-plugin
 subdir=cuda_extract_strings
 homepage=https://github.com/CudaText-addons/cuda_extract_strings
@@ -9,6 +9,11 @@ homepage=https://github.com/CudaText-addons/cuda_extract_strings
 section=commands
 caption=Extract Strings\Extract Strings...
 method=dlg_extract
+
+[item2]
+section=commands
+caption=Extract Strings\Filter Lines...
+method=dlg_filter
 
 [item5]
 section=commands
