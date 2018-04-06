@@ -61,6 +61,10 @@ def do_dialog(text, case_sens, items):
             return (action, text, case_sens)
     
 
+def get_emails():
+    text = ed.get_text_all()
+    return re.findall(REGEX_EMAIL, text)
+
 
 class Command:
     def run(self):
@@ -96,3 +100,9 @@ class Command:
                 return
     
     
+    def emails(self):
+        res = get_emails()
+        if res:
+            file_open('')
+            for s in res:
+                ed.set_text_line(-1, s)

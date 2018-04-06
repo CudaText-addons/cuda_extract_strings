@@ -1,6 +1,7 @@
 
 2018.04.06
-+ added button "Reg.ex. for e-mail", ie merged plugin "Extract emails" here
++ added command "Extract emails to new tab" 
++ added button "Reg.ex. for e-mail" to main dialog
 
 2015.12
 initial
