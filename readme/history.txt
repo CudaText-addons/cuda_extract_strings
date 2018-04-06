@@ -1,4 +1,8 @@
 
+2018.04.07
++ included code of "Filter Lines" plugin here
+* refactored
+
 2018.04.06
 + added command "Extract emails to new tab" 
 + added button "Reg.ex. for e-mail" to main dialog
