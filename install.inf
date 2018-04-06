@@ -7,8 +7,8 @@ homepage=https://github.com/CudaText-addons/cuda_extract_strings
 
 [item1]
 section=commands
-caption=Extract Strings\Dialog...
-method=run
+caption=Extract Strings\Extract Strings...
+method=dlg_extract
 
 [item5]
 section=commands
