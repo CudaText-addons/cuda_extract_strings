@@ -3,13 +3,16 @@ from cudatext import *
 
 RES_OPT_TEXT = 1
 RES_OPT_CASE = 2
-RES_FIND = 6
-RES_COPY_CLIP = 8
-RES_COPY_TAB = 9
+RES_BTN_EMAIL = 3
+RES_FIND = 7
+RES_COPY_CLIP = 9
+RES_COPY_TAB = 10
 
 SIZE_X = 600
 SIZE_Y = 400
 SIZE_BTN = 150
+
+REGEX_EMAIL = '[a-zA-Z0-9][\w\.\-_]*@\w[\w\.\-]*\.[a-zA-Z]{2,}'
 
 
 def do_find(text, case_sens):
@@ -24,28 +27,39 @@ def do_dialog(text, case_sens, items):
     c1 = chr(1)
     s_en = '1' if items else '0'
     s_case = '1' if case_sens else '0'
-    res = dlg_custom('Extract Strings', SIZE_X, SIZE_Y, 
-      '\n'.join([]
+    
+    while True:
+        res = dlg_custom('Extract Strings', SIZE_X, SIZE_Y, 
+        '\n'.join([]
          +[c1.join(['type=label', 'pos=6,5,300,0', 'cap=&Regular expression:'])]
          +[c1.join(['type=edit', 'pos=6,23,%d,0'%(SIZE_X-SIZE_BTN-12), 'val='+text])]
          +[c1.join(['type=check', 'pos=6,51,%d,0'%(SIZE_X-SIZE_BTN-12), 'cap=Case &sensitive', 'val='+s_case])]
+         +[c1.join(['type=button', 'pos=6,78,156,0', 'cap=Reg.ex. for e-mail'])]
             
-         +[c1.join(['type=label', 'pos=6,78,400,0', 'cap=F&ound strings:'])]
-         +[c1.join(['type=listbox', 'pos=6,96,%d,%d'%(SIZE_X-SIZE_BTN-12, SIZE_Y-22), 'items='+'\t'.join(items)])]
+         +[c1.join(['type=label', 'pos=6,108,400,0', 'cap=F&ound strings:'])]
+         +[c1.join(['type=listbox', 'pos=6,126,%d,%d'%(SIZE_X-SIZE_BTN-12, SIZE_Y-22), 'items='+'\t'.join(items)])]
          +[c1.join(['type=label', 'pos=6,%d,300,0'%(SIZE_Y-20), 'cap=Found: %d'%len(items)])]
              
          +[c1.join(['type=button', 'pos=%d,25,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap=&Find', 'props=1'])]
          +[c1.join(['type=button', 'pos=%d,55,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap=Cancel'])]
-         +[c1.join(['type=button', 'pos=%d,96,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap=Copy to &clipboard', 'en='+s_en])]
-         +[c1.join(['type=button', 'pos=%d,126,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap=Copy to &new tab', 'en='+s_en])]
-      ) )
-    if res is None: return
+         +[c1.join(['type=button', 'pos=%d,126,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap=Copy to &clipboard', 'en='+s_en])]
+         +[c1.join(['type=button', 'pos=%d,156,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap=Copy to &new tab', 'en='+s_en])]
+          ),
+          get_dict=True
+          )
+
+        if res is None: return
+
+        action = res['clicked']
+        text = res[RES_OPT_TEXT]
+        case_sens = res[RES_OPT_CASE]=='1'
         
-    res, state = res
-    states = state.split('\n')
-    text = states[RES_OPT_TEXT]
-    case_sens = states[RES_OPT_CASE]=='1'
-    return (res, text, case_sens)
+        if action == RES_BTN_EMAIL:
+            #show dlg again
+            text = REGEX_EMAIL
+        else:
+            return (action, text, case_sens)
+    
 
 
 class Command:

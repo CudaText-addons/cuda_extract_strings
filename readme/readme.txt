@@ -1,5 +1,10 @@
-plugin for CudaText.
-gives command "Extract Strings"--same dialog as in SynWrite. can find by regex
-all strings in current editor and then a)copy to clipb, b)copy to new tab.
+Plugin for CudaText.
+Gives dialog "Extract Strings", like in SynWrite.
+This dialog can find, by regular expression, substrings in the current editor, and then 
+- Copy them to clipboard,
+- Copy them to new tab.
 
-Author: AlexeyT
+Button "Reg.ex. for e-mail" sets regular expression to find e-mails. Ie, it's like plugin "Extract emails" embedded.
+
+Author: Alexey (CudaText)
+License: MIT
