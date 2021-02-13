@@ -2,6 +2,9 @@ import os
 import re
 from cudatext import *
 
+from cudax_lib import get_translation
+_   = get_translation(__file__)  # I18N
+
 fn_ini = 'cuda_filter_lines.ini'
 
 
@@ -20,14 +23,14 @@ def do_dialog(text, b_re, b_nocase, b_sort, b_save):
     
     res = dlg_custom('Filter Lines', 406, 190, 
       '\n'.join([]
-         +[c1.join(['type=label', 'pos=6,5,400,0', 'cap=&Text:'])]
+         +[c1.join(['type=label', 'pos=6,5,400,0', 'cap='+_('&Text:')])]
          +[c1.join(['type=edit', 'pos=6,23,400,0', 'val='+text])]
-         +[c1.join(['type=check', 'pos=6,51,400,0', 'cap=&Reg.ex.', 'val='+s_re])]
-         +[c1.join(['type=check', 'pos=6,76,400,0', 'cap=&Ignore case', 'val='+s_i])]
-         +[c1.join(['type=check', 'pos=6,101,400,0', 'cap=&Sort output', 'val='+s_sort])]
-         +[c1.join(['type=check', 'pos=6,126,400,0', 'cap=S&ave options', 'val='+s_save])]
-         +[c1.join(['type=button', 'pos=194,160,294,0', 'cap=&OK', 'props=1'])]
-         +[c1.join(['type=button', 'pos=300,160,400,0', 'cap=Cancel'])]
+         +[c1.join(['type=check', 'pos=6,51,400,0', 'cap='+_('&Reg.ex.'), 'val='+s_re])]
+         +[c1.join(['type=check', 'pos=6,76,400,0', 'cap='+_('&Ignore case'), 'val='+s_i])]
+         +[c1.join(['type=check', 'pos=6,101,400,0', 'cap='+_('&Sort output'), 'val='+s_sort])]
+         +[c1.join(['type=check', 'pos=6,126,400,0', 'cap='+_('S&ave options'), 'val='+s_save])]
+         +[c1.join(['type=button', 'pos=194,160,294,0', 'cap='+_('&OK'), 'props=1'])]
+         +[c1.join(['type=button', 'pos=300,160,400,0', 'cap='+_('Cancel')])]
       ) )
     if res is None: return
         
@@ -89,7 +92,7 @@ def dlg_filter():
             res.append(line)
     
     if not res:
-        msg_status('Cannot find lines: '+text)
+        msg_status(_('Cannot find lines: ')+text)
         return
         
     if b_sort:
@@ -102,5 +105,5 @@ def dlg_filter():
     
     ed.set_prop(PROP_TAB_TITLE, 'Filter['+flag+']: '+text)
     ed.set_text_all('\n'.join(res))
-    msg_status('Found %d matching lines' % len(res))
+    msg_status(_('Found %d matching lines') % len(res))
        

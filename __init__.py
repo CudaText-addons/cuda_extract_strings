@@ -2,6 +2,9 @@ from cudatext import *
 from . import extract
 from . import filtering
 
+from cudax_lib import get_translation
+_   = get_translation(__file__)  # I18N
+
 class Command:
 
     def dlg_extract(self):
@@ -16,7 +19,7 @@ class Command:
     
         res = extract.get_emails()
         if not res:
-            msg_status('No strings found')
+            msg_status(_('No strings found'))
             return
 
         #del dups

@@ -1,11 +1,14 @@
 
+2021.02.12
++ add: support translation (patch by Markus)
+
 2018.04.07
-+ included code of "Filter Lines" plugin here
++ add: included code of "Filter Lines" plugin here
 * refactored
 
 2018.04.06
-+ added command "Extract emails to new tab" 
-+ added button "Reg.ex. for e-mail" to main dialog
++ add: command "Extract emails to new tab" 
++ add: button "Reg.ex. for e-mail" to main dialog
 
 2015.12
 initial

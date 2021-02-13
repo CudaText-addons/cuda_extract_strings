@@ -1,6 +1,9 @@
 import re
 from cudatext import *
 
+from cudax_lib import get_translation
+_   = get_translation(__file__)  # I18N
+
 RES_OPT_TEXT = 1
 RES_OPT_CASE = 2
 RES_BTN_EMAIL = 3
@@ -29,21 +32,21 @@ def do_dialog(text, case_sens, items):
     s_case = '1' if case_sens else '0'
     
     while True:
-        res = dlg_custom('Extract Strings', SIZE_X, SIZE_Y, 
+        res = dlg_custom(_('Extract Strings'), SIZE_X, SIZE_Y, 
         '\n'.join([]
-         +[c1.join(['type=label', 'pos=6,5,300,0', 'cap=&Regular expression:'])]
+         +[c1.join(['type=label', 'pos=6,5,300,0', 'cap='+_('&Regular expression:')])]
          +[c1.join(['type=edit', 'pos=6,23,%d,0'%(SIZE_X-SIZE_BTN-12), 'val='+text])]
-         +[c1.join(['type=check', 'pos=6,51,%d,0'%(SIZE_X-SIZE_BTN-12), 'cap=Case &sensitive', 'val='+s_case])]
-         +[c1.join(['type=button', 'pos=6,78,156,0', 'cap=Reg.ex. for e-mail'])]
+         +[c1.join(['type=check', 'pos=6,51,%d,0'%(SIZE_X-SIZE_BTN-12), 'cap='+_('Case &sensitive'), 'val='+s_case])]
+         +[c1.join(['type=button', 'pos=6,78,156,0', 'cap='+_('Reg.ex. for e-mail')])]
             
-         +[c1.join(['type=label', 'pos=6,108,400,0', 'cap=F&ound strings:'])]
+         +[c1.join(['type=label', 'pos=6,108,400,0', 'cap='+_('F&ound strings:')])]
          +[c1.join(['type=listbox', 'pos=6,126,%d,%d'%(SIZE_X-SIZE_BTN-12, SIZE_Y-22), 'items='+'\t'.join(items)])]
-         +[c1.join(['type=label', 'pos=6,%d,300,0'%(SIZE_Y-20), 'cap=Found: %d'%len(items)])]
+         +[c1.join(['type=label', 'pos=6,%d,300,0'%(SIZE_Y-20), 'cap='+_('Found: %d')%len(items)])]
              
-         +[c1.join(['type=button', 'pos=%d,25,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap=&Find', 'props=1'])]
-         +[c1.join(['type=button', 'pos=%d,55,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap=Cancel'])]
-         +[c1.join(['type=button', 'pos=%d,126,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap=Copy to &clipboard', 'en='+s_en])]
-         +[c1.join(['type=button', 'pos=%d,156,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap=Copy to &new tab', 'en='+s_en])]
+         +[c1.join(['type=button', 'pos=%d,25,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap='+_('&Find'), 'props=1'])]
+         +[c1.join(['type=button', 'pos=%d,55,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap='+_('Cancel')])]
+         +[c1.join(['type=button', 'pos=%d,126,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap='+_('Copy to &clipboard'), 'en='+s_en])]
+         +[c1.join(['type=button', 'pos=%d,156,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap='+_('Copy to &new tab'), 'en='+s_en])]
           ),
           get_dict=True
           )
@@ -82,7 +85,7 @@ def dlg_extract():
                 
         elif res==RES_COPY_CLIP:
             app_proc(PROC_SET_CLIP, '\n'.join(items))
-            msg_status('Copied to clipboard')
+            msg_status(_('Copied to clipboard'))
             ed.focus()
             return
                 
@@ -90,11 +93,11 @@ def dlg_extract():
             file_open('')
             text = '\n'.join(items)+'\n'
             ed.set_text_all(text)
-            msg_status('Copied to tab')
+            msg_status(_('Copied to tab'))
             ed.focus()
             return
                 
         else:
-            msg_status('Unknown code of dlg')
+            msg_status(_('Unknown code of dlg'))
             return
     
