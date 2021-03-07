@@ -43,7 +43,7 @@ def do_dialog(text, case_sens, items):
          +[c1.join(['type=listbox', 'pos=6,126,%d,%d'%(SIZE_X-SIZE_BTN-12, SIZE_Y-22), 'items='+'\t'.join(items)])]
          +[c1.join(['type=label', 'pos=6,%d,300,0'%(SIZE_Y-20), 'cap='+_('Found: %d')%len(items)])]
              
-         +[c1.join(['type=button', 'pos=%d,25,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap='+_('&Find'), 'props=1'])]
+         +[c1.join(['type=button', 'pos=%d,25,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap='+_('&Find'), 'ex0=1'])]
          +[c1.join(['type=button', 'pos=%d,55,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap='+_('Cancel')])]
          +[c1.join(['type=button', 'pos=%d,126,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap='+_('Copy to &clipboard'), 'en='+s_en])]
          +[c1.join(['type=button', 'pos=%d,156,%d,0'%(SIZE_X-SIZE_BTN-6, SIZE_X-6), 'cap='+_('Copy to &new tab'), 'en='+s_en])]

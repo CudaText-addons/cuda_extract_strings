@@ -29,7 +29,7 @@ def do_dialog(text, b_re, b_nocase, b_sort, b_save):
          +[c1.join(['type=check', 'pos=6,76,400,0', 'cap='+_('&Ignore case'), 'val='+s_i])]
          +[c1.join(['type=check', 'pos=6,101,400,0', 'cap='+_('&Sort output'), 'val='+s_sort])]
          +[c1.join(['type=check', 'pos=6,126,400,0', 'cap='+_('S&ave options'), 'val='+s_save])]
-         +[c1.join(['type=button', 'pos=194,160,294,0', 'cap='+_('&OK'), 'props=1'])]
+         +[c1.join(['type=button', 'pos=194,160,294,0', 'cap='+_('&OK'), 'ex0=1'])]
          +[c1.join(['type=button', 'pos=300,160,400,0', 'cap='+_('Cancel')])]
       ) )
     if res is None: return
