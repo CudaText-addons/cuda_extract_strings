@@ -1,3 +1,8 @@
+2021.07.01 (patch by @JairoMartinezA)
++ add: option to include line numbers in the "Filter Lines" dialog
++ add: option to preserve the current lexer in the "Filter Lines" dialog
++ add: option to include a number of lines before or after the matched line in
+  the "Filter Lines" dialog
 
 2021.02.12
 + add: support translation (patch by Markus)
@@ -7,7 +12,7 @@
 * refactored
 
 2018.04.06
-+ add: command "Extract emails to new tab" 
++ add: command "Extract emails to new tab"
 + add: button "Reg.ex. for e-mail" to main dialog
 
 2015.12
