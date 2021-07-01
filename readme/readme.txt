@@ -1,46 +1,41 @@
 Plugin for CudaText.
-
 Provides functionality to search in lines and to extract/filter lines with the
-matches. The component was inherited from the dialog "Extract Strings" like in
-SynWrite.
+matches. "Extract strings" functionality was inherited from SynWrite.
 
 Plugin features
 ---------------
 
-- "Extract Strings..." Dialog
+* "Extract Strings..." command
 
-Use this dialog to find by regular expression, substrings in the current editor,
-after you found the matches, you have the option to copy them to clipboard or
-copy to new tab.
+Use this dialog to find, by regular expression, substrings in the current document.
+After you found some matches, you have the buttons to copy them to clipboard or copy
+to a new tab.
 
 This dialog also has the button "Reg.ex. for e-mail" which sets a common regular
 expression to find e-mails.
 
-- "Extract e-mails to new tab" command
+* "Extract e-mails to new tab" command
 
-Use this command directly to found and all e-mail matches and copy them to a new
-tab.
+Use this command to find and all e-mails in the current document, and copy them
+to a new tab. It doesn't show any dialogs, so it's faster to use than
+"Extract Strings".
 
-- "Filter lines..." Dialog
+* "Filter lines..." command
 
-Use this dialog to find in current editor tab, all lines containing a simple
-string or a regular expression string. This dialog has the next options:
+Use this dialog to find in the current document all lines containing a simple
+string or a regular expression string. Command puts all matched lines to a new tab.
+Dialog has the following options:
 
-	* Reg.ex - Checkbox to specify that the entered string is a regular
-	  expression.
-	* Ignore case - Checkbox to set the search to ignore the case for the
-	  entered string.
+	* Reg.ex. - Specify that the filter-string is a regular expression.
+	* Ignore case - Perform case-insensitive search.
 	* Sort output - The new tab with the results will contain the lines sorted.
-	* Include line numbers - Add to matches lines a leading string containing
-	  the line number with the pattern [##].
-	* Keep lexer - The lines with the matches preserves the current editor lexer.
-	* Save options - Remember current selected options in the next command
-	  execution.
-	* Number of lines before match - Simulate the option as "grep -B #" linux
-	  command.
-	* Number of lines after match - Simulate the option as "grep -A #" linux
-	  command.
-
+	* Include line numbers - Add to resulting lines the prefix containing
+	  the line number in the form [###] (width depends on maximal line count).
+	* Keep lexer - The output tab will have the same lexer as the source tab.
+	* Save options - Remember current options in dialog, for the next dialog
+	  showing.
+	* Number of lines before match - Simulate the option "grep -B #" from Linux.
+	* Number of lines after match - Simulate the option "grep -A #" from Linux.
 
 
 About
@@ -49,5 +44,4 @@ About
 Authors:
   Alexey Torgashin (CudaText)
   @JairoMartinezA (at GitHub)
-
 License: MIT
