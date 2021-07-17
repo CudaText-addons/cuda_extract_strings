@@ -27,7 +27,7 @@ def do_dialog(text, b_re, b_nocase, b_sort, b_save, i_before, i_after, b_number,
     s_number = '1' if b_number else '0'
     s_lexer = '1' if b_lexer else '0'
 
-    res = dlg_custom('Filter Lines', 406, 300,
+    res = dlg_custom(_('Filter Lines'), 406, 300,
       '\n'.join([]
          +[c1.join(['type=label',  'pos=6,5,400,0',     'cap='+_('&Text:')])]
          +[c1.join(['type=edit',   'pos=6,23,400,0',    'val='+text])]
